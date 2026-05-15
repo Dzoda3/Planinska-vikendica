@@ -1,0 +1,19 @@
+<div class="rezervacije">
+  <h2>Rezervacije</h2>
+
+  @if(rezervacije.length > 0) {
+    @for(r of rezervacije; track r.idR) {
+      <h3>{{nadji(r)}}</h3>
+      <p><strong>Turista: </strong> {{r.korisnicko_ime}}</p>
+      <p><strong>Datum: </strong> {{r.datumOd | date:'mediumDate'}}</p>
+
+      <div>
+        <button (click)="potvrdi(r)">Potvrdi</button>
+        <button (click)="odbij(r)">Odbij</button>
+      </div>
+    }
+  }
+  @else {
+    <p>Nema neobradjenih rezervacija</p>
+  }
+</div>

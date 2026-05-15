@@ -1,0 +1,22 @@
+<h2>Promena lozinke</h2>
+<table>
+  <tr>
+    <td>Stara lozinka:</td>
+    <td><input type="text" [(ngModel)]="staraLozinka" (input)="proveraStareLozinke()"></td>
+    <td><span style="color: red;">{{greska1}}</span></td>
+  </tr>
+
+  <tr>
+    <td>Nova lozinka:</td>
+    <td><input type="text" [(ngModel)]="novaLozinka" (input)="proveraNoveLozinke()"></td>
+    <td><span style="color: red;">{{greska2}}</span></td>
+  </tr>
+
+  <tr>
+    <td>Potvrdi lozinku:</td>
+    <td><input type="text" [(ngModel)]="potvrdaNoveLozinke" (input)="proveraNoveLozinke()"></td>
+    <td><span style="color: red;">{{greska3}}</span></td>
+  </tr>
+</table>
+<span style="color: red;">{{greska}}</span> <br/>
+<button (click)="promenaLozinke()">Promeni lozinku</button>

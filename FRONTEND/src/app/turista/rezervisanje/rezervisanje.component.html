@@ -1,0 +1,72 @@
+<div class="rezervisanje">
+  <h3>Rezervisi vikendicu</h3>
+
+  <div *ngIf="korak == 1" class="korak">
+    <h4>Podaci</h4>
+
+    <div>
+      <label>Datum pocetka: </label>
+      <input type="datetime-local" [(ngModel)]="datumOd">
+
+      <label>Datum zavrsetka: </label>
+      <input type="datetime-local" [(ngModel)]="datumDo">
+
+      <label>Broj odraslih: </label>
+      <input type="number" [(ngModel)]="odrasli" min="1">
+
+      <label>Broj dece: </label>
+      <input type="number"[(ngModel)]="deca" min="0">
+
+      <div class="dugmici">
+        <button type="submit" (click)="nastavi()">Nastavi</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="korak == 2" class="korak">
+    <h4>Potvrda</h4>
+
+    <div class="info">
+      <p><strong>Vikendica: </strong> {{vikendica.naziv}}</p>
+      <p><strong>Period: </strong> {{datumOd}} - {{datumDo}}</p>
+      <p><strong>Odrasli: </strong> {{odrasli}}</p>
+      <p><strong>Deca: </strong> {{deca}}</p>
+      <p><strong>Cena po nocenju: </strong> {{cenaNocenja}}</p>
+      <p><strong>Ukupna cena: </strong> <span class="total">{{cena}}</span></p>
+    </div>
+
+    <div>
+      <label>Broj kreditne kartice</label>
+      <input type="text" [(ngModel)]="kartica" (input)="proveraKartice()">
+      @if(tipKartice == "Visa") {
+        <img src={{visa}} width="50" height="50">
+      }
+      @else if(tipKartice == "MasterCard") {
+        <img src={{mastercard}} width="50" height="50">
+      }
+      @else if(tipKartice == "Diners") {
+        <img src={{diners}} width="50" height="50">
+      }
+      <span [style.color]="validna ? 'green' : 'red'">{{poruka}}</span>
+
+      <label>Dodatni zahtevi: </label>
+      <textarea [(ngModel)]="zahtevi" rows="3" maxlength="500" placeholder="Do 500 karaktera"></textarea>
+
+      <div class="dugmici">
+        <button type="submit" (click)="potvrdiRezervaciju()">Potvrdi zakazivanje</button>
+        <button type="button" (click)="nazad()">Nazad</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="greska" class="rezultat" style="color: red;">
+    <pre>{{greska}}</pre>
+  </div>
+
+  <div *ngIf="uspeh" class="rezultat">
+    <pre>{{uspeh}}</pre>
+  </div>
+
+  <br/>
+  <button (click)="povratak()">Povratak</button>
+</div>

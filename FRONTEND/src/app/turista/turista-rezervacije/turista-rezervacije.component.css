@@ -1,0 +1,17 @@
+.rezervacije {
+  display: flex;
+  text-align: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+
+.tabela {
+  width: 500px;
+  padding: 2rem;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}

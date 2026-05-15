@@ -1,0 +1,77 @@
+.admin {
+  margin: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.tabela th, .tabela td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+}
+
+button {
+  margin: 5px;
+  padding: 6px 12px;
+}
+
+.podela {
+  display: flex;
+  width: 500px;
+  margin: 50px auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  gap: 30px;
+}
+
+.azuriraj {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+select {
+  width:100%;
+  padding:10px;
+  font-size:16px;
+  box-sizing:border-box;
+  margin-bottom:12px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+label {
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  font-size:16px;
+  box-sizing:border-box;
+  margin-bottom:12px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+.red {
+  display: flex;
+  gap: 10px;
+}
+
+.pola {
+  flex: 1;
+}
+
+.centar {
+  text-align: center;
+}

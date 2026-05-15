@@ -1,0 +1,62 @@
+.pola {
+  display: flex;
+}
+
+table {
+  width: 500px;
+  border-collapse: collapse;
+  margin: 50px auto;
+  margin-left: 250px;
+  text-align: center;
+}
+
+.table th, .table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+}
+
+button {
+  margin: 5px;
+  padding: 3px 12px;
+}
+
+.azuriraj {
+  max-width: 400px;
+  margin: 20px auto;
+  margin-right: 350px;
+}
+
+button {
+  padding: 6px 12px;
+}
+
+label {
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  font-size:16px;
+  box-sizing:border-box;
+  margin-bottom:12px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+textarea {
+  width:100%;
+  padding:10px;
+  font-size:16px;
+  box-sizing:border-box;
+  margin-bottom:12px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+.centar {
+  text-align: center;
+}
+

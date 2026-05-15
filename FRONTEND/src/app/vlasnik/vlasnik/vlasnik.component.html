@@ -1,0 +1,17 @@
+<div>
+  <button (click)="prikaziProfil()">Profil</button> | <button (click)="prikaziRezervacije()">Rezervacije</button> | <button (click)="prikaziVikendice()">Moje vikendice</button>
+</div>
+<br/>
+<div>
+  <button (click)="promenaLozinke()">Promena lozinke</button> | <app-logout></app-logout>
+</div>
+
+@if(profil) {
+  <app-vlasnik-profil></app-vlasnik-profil>
+}
+@else if(pokaziVikendice) {
+  <app-vlasnik-vikendice></app-vlasnik-vikendice>
+}
+@else if(rezervacije) {
+  <app-vlasnik-rezervacije></app-vlasnik-rezervacije>
+}

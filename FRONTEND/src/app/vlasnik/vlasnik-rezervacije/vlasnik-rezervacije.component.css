@@ -1,0 +1,9 @@
+.rezervacije {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+button {
+  margin-right: 3px;
+}

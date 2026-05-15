@@ -1,0 +1,56 @@
+<div class="stranica">
+  <div class="login">
+      <h2>Prijava</h2>
+
+      <label>Korisnicko ime</label>
+      <input type="text" [(ngModel)]="kor_ime">
+
+      <label>Lozinka</label>
+      <input type="password"[(ngModel)]="sifra">
+
+      <label>Tip</label> <br/>
+      <select [(ngModel)]="tip">
+        <option value="turista">Turista</option>
+        <option value="vlasnik">Vlasnik</option>
+      </select> <br/>
+      <span>{{greska}}</span>
+
+      <button (click)="login()">Prijavi se</button>
+      <button class="b2" (click)="registracija()">Registruj se</button> <br/>
+  </div>
+
+  <div class="vikendice">
+    <h3>Vikendice</h3>
+
+    Pretraga <br/>
+    Naziv: <input type="text" class="pret" [(ngModel)]="naziv" (input)="filtriraj(naziv, mesto)">
+    Mesto: <input type="text" class="pret" [(ngModel)]="mesto" (input)="filtriraj(naziv, mesto)"> <br/>
+
+    @if(vikendice.length > 0){
+    <table border="1" style="text-align: center;" [width]="300">
+      <tr>
+        <th (click)="sortiraj(0)">Naziv</th>
+        <th (click)="sortiraj(1)">Mesto</th>
+      </tr>
+      @for(v of vikendice; track v.idV){
+        <tr>
+            <td>{{v.naziv}}</td>
+            <td>{{v.mesto}}</td>
+        </tr>
+      }
+    </table>
+    }
+    @else {
+        <p>Nema odgovarajucih vikendica.</p>
+    }
+
+    <br/>
+    Broj vikendica: {{brVikendica}} <br/>
+    Broj registrovanih vlasnika: {{brVlasnika}} <br/>
+    Broj registrovanih turista: {{brTurista}} <br/>
+    Broj rezervisanih vikendica <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Poslednja 24 casa: {{rez24}} <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Poslednjih 7 dana: {{rez7}} <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Poslednjih 30 dana: {{rez30}} <br/>
+  </div>
+</div>

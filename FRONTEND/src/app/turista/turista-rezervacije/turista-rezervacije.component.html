@@ -1,0 +1,54 @@
+<div class="rezervacije">
+  <div class="tabela">
+    <h2>Rezervacije</h2>
+    @if(rezervacije.length > 0){
+      <table border="1" style="text-align: center;" [width]="300">
+        <tr>
+          <th>Naziv vikendice</th>
+          <th>Mesto</th>
+          <th>Datum od</th>
+          <th>Datum do</th>
+          <th>Otkazi</th>
+        </tr>
+        @for(r of rezervacije; track r.idR) {
+          @if(r.datumOd.split('T')[0] > datumString) {
+            <tr>
+              <td>{{dohvatiNaziv(r)}}</td>
+              <td>{{dohvatiMesto(r)}}</td>
+              <td>{{r.datumOd.split('T')[0]}}</td>
+              <td>{{r.datumDo}}</td>
+              <td><button (click)="otkazi(r)" [disabled]="!moguceOtkazati(r)">Otkazi</button></td>
+            </tr>
+          }
+        }
+      </table>
+    }
+    @else {
+      <p>Nema odgovarajucih rezervacija.</p>
+    }
+  </div>
+
+  <div class="tabela">
+    <h2>Arhiva rezervacija</h2>
+    @if(arhivaRezervacija.length > 0){
+      <table border="1" style="text-align: center;" [width]="300">
+        <tr>
+          <th>Naziv vikendice</th>
+          <th>Datum od</th>
+          <th>Komentar</th>
+          <th>Ocena</th>
+        </tr>
+        @for(r of arhivaRezervacija; track r.idR) {
+          <tr>
+            <td>{{dohvatiNaziv(r)}}</td>
+            <td>{{r.datumOd}}</td>
+            <td>{{r.datumDo}}</td>
+          </tr>
+        }
+      </table>
+    }
+    @else {
+      <p>Nema odgovarajucih rezervacija.</p>
+    }
+  </div>
+</div>

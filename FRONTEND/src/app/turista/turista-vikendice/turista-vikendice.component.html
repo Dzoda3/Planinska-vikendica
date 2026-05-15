@@ -1,0 +1,73 @@
+<div class="vikendice">
+  <h2>Pretraga</h2>
+  <table>
+    <tr>
+      <td>Naziv:</td>
+      <td><input type="text" [(ngModel)]="naziv" (input)="filtriraj(naziv, mesto)"></td>
+    </tr>
+
+    <tr>
+      <td>Mesto:</td>
+      <td><input type="text" [(ngModel)]="mesto" (input)="filtriraj(naziv, mesto)"></td>
+    </tr>
+  </table>
+  @if(vikendice.length > 0){
+  <table border="1" style="text-align: center;" [width]="300">
+    <tr>
+      <th (click)="sortiraj(0)">Naziv</th>
+      <th (click)="sortiraj(1)">Mesto</th>
+      <th>Ocena</th>
+    </tr>
+    @for(v of vikendice; track v.idV){
+      <tr>
+          <td><a (click)="prikazi(v)">{{v.naziv}}</a></td>
+          <td>{{v.mesto}}</td>
+           <!--<td>
+            <span *ngFor="let zvezda of zvezde(v.idV)">
+              <span [class]="{'pune': zvezda == 'pune', 'prazne': zvezda == 'prazne'}" class="zvezda"></span>
+            </span>
+            {{ocene.get(v.idV)}}
+          </td>-->
+      </tr>
+    }
+  </table>
+}
+@else {
+  <p>Nema odgovarajucih vikendica.</p>
+}
+
+@if(prikaz) {
+  <div class="vikendica">
+    <h2>{{vikendica.naziv}}</h2>
+
+    <h3>Galerija</h3>
+    <section class="galerija">
+      <img *ngFor="let s of slike.get(vikendica.idV)" [src]="s">
+    </section>
+
+    <section class="usluge">
+      <h3>Usluge vikendice</h3>
+      <ul>
+        <li *ngFor="let u of vikendica.usluge.split(', ')">{{u}}</li>
+      </ul>
+    </section>
+
+    <section class="cenovnik">
+      <p><strong>Cena nocenja: </strong> {{proveriMesec() ? vikendica.letnjaCena : vikendica.zimskaCena}}</p>
+      <p><strong>Kontakt telefon: </strong> <a>{{vikendica.telefon}}</a></p>
+    </section>
+
+    <h3>Komentari</h3>
+    <section class="recenzije" *ngFor="let komentar of komentari.get(vikendica.idV)">
+      <strong>{{komentar.korisnicko_ime}}</strong> - {{komentar.komentar}}
+    </section>
+
+    <h3>Ocene</h3>
+    <section class="recenzije" *ngFor="let ocena of ocene.get(vikendica.idV)">
+      <strong>{{ocena.korisnicko_ime}}</strong> - {{ocena.ocena}}
+    </section>
+
+    <button (click)="rezervisi(vikendica)">Rezervisi</button>
+  </div>
+}
+</div>

@@ -1,0 +1,76 @@
+<div class="podela">
+  <div class="Informacije">
+    <h2>Informacije</h2>
+    <table>
+      <tr>
+        <td>Ime:</td>
+        <td>{{korisnik.ime}}</td>
+      </tr>
+
+      <tr>
+        <td>Prezime:</td>
+        <td>{{korisnik.prezime}}</td>
+      </tr>
+
+      <tr>
+        <td>Adresa:</td>
+        <td>{{korisnik.adresa}}</td>
+      </tr>
+
+      <tr>
+        <td>E-mail:</td>
+        <td>{{korisnik.mejl}}</td>
+      </tr>
+
+      <tr>
+        <td>Kontakt telefon:</td>
+        <td>{{korisnik.telefon}}</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <img [src]="korisnik.slika" width="200" height="200">
+  </div>
+</div>
+
+<div class="azuriraj">
+  <h2>Azuriraj podatke</h2>
+
+  <div class="red">
+    <div class="pola">
+      <label>Ime</label>
+      <input type="text" [(ngModel)]="ime">
+    </div>
+
+    <div class="pola">
+      <label>Prezime</label>
+      <input type="text" [(ngModel)]="prezime">
+    </div>
+  </div>
+
+  <div>
+    <label>Adresa</label>
+    <input type="text" [(ngModel)]="adresa">
+  </div>
+
+  <div>
+    <label>Kontakt telefon</label>
+    <input type="text" [(ngModel)]="telefon">
+  </div>
+
+  <div>
+    <label>E-mail adresa</label>
+    <input type="text" [(ngModel)]="mejl" placeholder="primer@servis.com">
+  </div>
+
+  <div>
+    <label>Slika</label>
+    <input type="file" (change)="proveraSlike($event)" accept="image/png, image/jpeg">
+    <span style="color:red">{{greskaSlika}}</span>
+  </div>
+
+  <div class="centar">
+    <span [style.color]="boja">{{uspeh}}</span> <br/>
+    <button (click)="azuriraj()">Azuriraj</button>
+  </div>
+</div>

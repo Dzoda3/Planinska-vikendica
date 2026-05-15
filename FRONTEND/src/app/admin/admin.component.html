@@ -1,0 +1,153 @@
+<div class="admin">
+  <h2>Admin {{korisnik.ime}} {{korisnik.prezime}}</h2>
+
+  <div>
+    <h3>Korisnici</h3>
+    @if(korisnici.length > 0) {
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Tip</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(k of korisnici; track k.korisnicko_ime) {
+            <tr>
+              <td>{{k.ime}}</td>
+              <td>{{k.prezime}}</td>
+              <td>{{k.tip}}</td>
+              <td style="text-align: center;">
+                <button (click)="prikazi(k)">Azuriraj</button>
+                <button (click)="deaktiviraj(k)">{{k.deaktiviran == 1 ? "Aktiviraj" : "Deaktiviraj"}}</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+    @else {
+      <p>Trenutno nema korisnika</p>
+    }
+
+    @if(azuriranje) {
+      <div class="azuriraj">
+        <h2>Azuriraj podatke</h2>
+
+        <div>
+          <label>Korisnicko ime</label>
+          <input type="text" [(ngModel)]="korisnicko_ime">
+        </div>
+
+        <div>
+          <label>Lozinka</label>
+          <input type="password" [(ngModel)]="lozinka" (input)="proveraLozinke()">
+          <span style="color: red;">{{greskaLozinka}}</span>
+        </div>
+
+        <div class="red">
+          <div class="pola">
+            <label>Ime</label>
+            <input type="text" [(ngModel)]="ime">
+          </div>
+
+          <div class="pola">
+            <label>Prezime</label>
+            <input type="text" [(ngModel)]="prezime">
+          </div>
+        </div>
+
+        <div class="red">
+          <div class="pola">
+            <label>Tip</label>
+            <select [(ngModel)]="tip">
+              <option value="turista">Turista</option>
+              <option value="vlasnik">Vlasnik</option>
+            </select>
+          </div>
+
+          <div class="pola">
+            <label>Pol</label>
+            <select [(ngModel)]="pol">
+              <option value="M">Muski</option>
+              <option value="Z">Zenski</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>Adresa</label>
+          <input type="text" [(ngModel)]="adresa">
+        </div>
+
+        <div>
+          <label>Broj telefona</label>
+          <input type="text" [(ngModel)]="telefon">
+        </div>
+
+        <div>
+          <label>E-mail adresa</label>
+          <input type="text" [(ngModel)]="mejl" placeholder="primer@servis.com">
+        </div>
+
+        <label>Slika</label>
+          <input type="file" (change)="proveraSlike($event)" accept="image/png, image/jpeg">
+        <span style="color:red">{{greskaSlika}}</span>
+
+        <div>
+          <label>Broj kreditne kartice</label>
+          <input type="text" [(ngModel)]="kartica" (input)="proveraKartice()" placeholder="1234 5678 1234 5678">
+          @if(tipKartice == "Visa") {
+            <img src="visa.jpg" width="30" height="15">
+          }
+          @else if(tipKartice == "MasterCard") {
+            <img src="mastercard.jpg" width="30" height="15">
+          }
+          @else if(tipKartice == "Diners") {
+            <img src="diners.png" width="30" height="15">
+          }
+          <span [style.color]="validna ? 'green' : 'red'">{{poruka}}</span>
+        </div>
+
+        <div class="centar">
+          <span [style.color]="boja">{{uspeh}}</span> <br/>
+          <button (click)="azuriraj()">Azuriraj</button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="pending-requests">
+    <h3>Registracije</h3>
+    @if(registracije.length > 0) {
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Mejl</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(r of registracije; track r.korisnicko_ime) {
+            <tr>
+              <td>{{r.ime}}</td>
+              <td>{{r.prezime}}</td>
+              <td>{{r.mejl}}</td>
+              <td>
+                <button (click)="prihvati(r.korisnicko_ime)">Prihvati</button>
+                <button (click)="odbij(r.korisnicko_ime)">Odbij</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+    @else {
+      <p>Trenutno nema registracija</p>
+    }
+  </div>
+</div>

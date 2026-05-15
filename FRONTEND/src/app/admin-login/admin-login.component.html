@@ -1,0 +1,13 @@
+<div class="login">
+  <h2>Prijava</h2>
+
+  <label>Korisnicko ime</label>
+  <input type="text" [(ngModel)]="kor_ime">
+
+  <label>Lozinka</label>
+  <input type="password"[(ngModel)]="sifra">
+
+  <span>{{greska}}</span>
+
+  <button (click)="login()">Prijavi se</button>
+</div>

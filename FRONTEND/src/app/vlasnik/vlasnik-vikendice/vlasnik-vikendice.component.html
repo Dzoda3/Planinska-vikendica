@@ -1,0 +1,74 @@
+<div class="pola">
+  <div>
+    <table border="1">
+      <tr>
+        <th>Naziv</th>
+        <th>Mesto</th>
+        <th>Usluge</th>
+        <th></th>
+      </tr>
+      @for(v of vikendice; track v.idV) {
+        <tr>
+          <td>{{v.naziv}}</td>
+          <td>{{v.mesto}}</td>
+          <td>{{v.usluge}}</td>
+          <td style="text-align: center;">
+            <button (click)="prikazi(v)">Azuriraj</button>
+            <button (click)="obrisi(v.idV)">Obrisi</button>
+          </td>
+        </tr>
+      }
+      <tr>
+        <td colspan="4"><button (click)="dodaj()">Dodaj</button></td>
+      </tr>
+    </table>
+  </div>
+
+  @if(azuriranje || dodavanje) {
+    <div class="azuriraj">
+      <h2>{{naslov}}</h2>
+
+      <div>
+        <label>Naziv</label>
+        <input type="text" [(ngModel)]="naziv">
+      </div>
+
+      <div>
+        <label>Mesto</label>
+        <input type="text" [(ngModel)]="mesto">
+      </div>
+
+      <div>
+        <label>Slike</label>
+        <input type="text" [(ngModel)]="slike">
+      </div>
+
+      <div>
+        <label>Usluge</label>
+        <textarea [(ngModel)]="usluge"></textarea>
+      </div>
+
+      <div>
+        <label>Letnja cena</label>
+        <input type="number" [(ngModel)]="letnjaCena">
+      </div>
+
+      <div>
+        <label>Zimska cena</label>
+        <input type="number" [(ngModel)]="zimskaCena">
+      </div>
+
+      <div>
+        <label>Telefon</label>
+        <input type="text" [(ngModel)]="telefon">
+      </div>
+      @if(dodavanje) {
+        <label>Dodaj JSON fajl:</label>
+        <input type="file" accept=".json" (change)="json($event)"><br>
+      }
+      <div class="centar">
+        <button (click)="azuriraj()">{{dugme}}</button>
+      </div>
+    </div>
+  }
+</div>

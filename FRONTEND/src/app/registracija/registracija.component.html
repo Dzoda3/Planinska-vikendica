@@ -1,0 +1,84 @@
+<div class="registracija">
+  <h2>Registracija</h2>
+
+  <div>
+    <label>Korisnicko ime</label>
+    <input type="text" [(ngModel)]="korisnicko_ime">
+  </div>
+
+  <div>
+    <label>Lozinka</label>
+    <input type="password" [(ngModel)]="lozinka" (input)="proveraLozinke()">
+    <span style="color: red;">{{greskaLozinka}}</span>
+  </div>
+
+  <div class="red">
+    <div class="pola">
+      <label>Ime</label>
+      <input type="text" [(ngModel)]="ime">
+    </div>
+
+    <div class="pola">
+      <label>Prezime</label>
+      <input type="text" [(ngModel)]="prezime">
+    </div>
+  </div>
+
+  <div class="red">
+    <div class="pola">
+      <label>Tip</label>
+      <select [(ngModel)]="tip">
+        <option value="turista">Turista</option>
+        <option value="vlasnik">Vlasnik</option>
+      </select>
+    </div>
+
+    <div class="pola">
+      <label>Pol</label>
+      <select [(ngModel)]="pol">
+        <option value="M">Muski</option>
+        <option value="Z">Zenski</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label>Adresa</label>
+    <input type="text" [(ngModel)]="adresa">
+  </div>
+
+  <div>
+    <label>Broj telefona</label>
+    <input type="text" [(ngModel)]="telefon">
+  </div>
+
+  <div>
+    <label>E-mail adresa</label>
+    <input type="text" [(ngModel)]="mejl" placeholder="primer@servis.com">
+  </div>
+
+  <div>
+    <label>Slika</label>
+    <input type="file" (change)="proveraSlike($event)" accept="image/png, image/jpeg">
+    <span style="color:red">{{greskaSlika}}</span>
+  </div>
+
+  <div>
+    <label>Broj kreditne kartice</label>
+    <input type="text" [(ngModel)]="kartica" (input)="proveraKartice()" placeholder="1234 5678 1234 5678">
+    @if(tipKartice == "Visa") {
+      <img src={{visa}} width="50" height="50">
+    }
+    @else if(tipKartice == "MasterCard") {
+      <img src={{mastercard}} width="50" height="50">
+    }
+    @else if(tipKartice == "Diners") {
+      <img src={{diners}} width="50" height="50">
+    }
+    <span [style.color]="validna ? 'green' : 'red'">{{poruka}}</span>
+  </div>
+
+  <span style="color: red;">{{greska}}</span> <br/>
+  <button class="d"(click)="registracija()">Registruj se</button>
+  <a routerLink="">Nazad</a>
+</div>

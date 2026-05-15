@@ -1,0 +1,54 @@
+.stranica {
+  display: flex;
+}
+
+.login {
+  width: 300px;
+  margin: 150px auto;
+  margin-left: 300px;
+  padding: 2rem;
+  border: 1px solid #ccc;
+}
+
+.vikendice {
+  width: 300px;
+  margin: 75px auto;
+  margin-right: 300px;
+  padding: 2rem;
+}
+
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 0.5rem 0;
+  box-sizing: border-box;
+}
+
+button {
+  width: 45%;
+  padding: 10px;
+  margin-top: 1rem;
+}
+
+.b2 {
+  float: right;
+}
+
+select {
+  width: 30%;
+  padding: 8px;
+  margin: 0.5rem 0;
+  box-sizing: border-box;
+}
+
+span {
+  color: red;
+  display: block;
+  text-align: center;
+}
+
+.pret {
+  width: 80%;
+  padding: 4px;
+}
